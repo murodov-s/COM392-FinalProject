@@ -183,12 +183,19 @@ __global__ void mingle(int* stage, int* ming, float spreadrate, int duration,
       curandState localState = gRand[tid];
       theRand = curand_uniform(&localState); // value between 0-1
       gRand[tid] = localState;
-      nX = floor(theRand * 1024.0);
+
+      // nX = floor(theRand * 1024.0);
+      nX = x + floor(((theRand <= 0.5 ? -1 : 1) * theRand) * 3);
+      //we made it to look as a spreading virus(circles) in some areas at the same time
+      ////the less the radius, the more logicaly the spread of infection
 
       localState = gRand[tid];
       theRand = curand_uniform(&localState);
       gRand[tid] = localState;
-      nY = floor(theRand * 1024.0);
+
+      //nY = floor(theRand * 1024.0);
+      nX = x + floor(((theRand <= 0.5 ? -1 : 1) * theRand) * 3);
+      //we made it to look as a spreading virus(circles) in some areas at the same time
 
       neighborStage = tex2D(texStage, nX, nY);
 
@@ -196,6 +203,7 @@ __global__ void mingle(int* stage, int* ming, float spreadrate, int duration,
       localState = gRand[tid];
       theRand = curand_uniform(&localState);
       gRand[tid] = localState;
+
       if(neighborStage > 0 && neighborStage < duration){ // if neighbor is infectious
         if(theRand < spreadrate) stage[tid] = 1;  // self becomes infected with some probability
         }
@@ -213,7 +221,8 @@ __global__ void drawStage(float* red, float* green, float* blue,
   int tid = x + (y * blockDim.x * gridDim.x);
 
   if (tid < sizePopulation){
-    if (stage[tid] == 0) {  // if not infected, draw as white
+    if (stage[tid] == 0) // if not infected, draw as white
+     {
       red[tid] = 1.0;
       green[tid] = 1.0;
       blue[tid] = 1.0;
