@@ -10,11 +10,11 @@ Our team is called "Pomerebucen" and it consists of three people:
   
 You can contact us via the following emails:
  
-  murodov_s@auca.kg
+    murodov_s@auca.kg
   
-  khudododkhonov_sh@auca.kg 
+    khudododkhonov_sh@auca.kg 
   
-  amunbekova_m@auca.kg
+    amunbekova_m@auca.kg
 
 ### Project Description: 
 
@@ -34,12 +34,11 @@ The simulation is performed by changing the white background of our screen to ot
 
 #### To clone the repository:
 
-````
-git clone https://github.com/murodov-s/COM392-FinalProject.git
+    git clone https://github.com/murodov-s/COM392-FinalProject.git
 
-````
+
+
 #### To build  and run the project from sources:
 
-```` 
-make
-./viruSim
+    make
+    ./viruSim
