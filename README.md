@@ -30,4 +30,4 @@ The simulation is performed by changing the white background of our screen to ot
 
 ### The Screenshot below displays the real-time image of virus being spread in the city 
 
-![](COM392-FinalProject/Screenshot%20from%202021-12-24%2019-42-17.png)
+![](Screenshot%20from%202021-12-24%2019-42-17.png)
